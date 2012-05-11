@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Ace Kitchen Sink</title>
+</head>
+<body>
+  
+    <div id="editor">
+    </div>
+
+<!-- DEVEL-->
+  <script type="text/javascript">
+      var require = {
+          baseUrl: window.location.protocol + "//" + window.location.host + window.location.pathname.split("/").slice(0, -1).join("/"),
+          paths: {
+              ace: "lib/ace"
+          }
+      };
+  </script>
+  <script src="demo/kitchen-sink-webgltext/require.js" data-main="demo/kitchen-sink-webgltext/demo" type="text/javascript"></script>
+
+<!--DEVEL -->
+
+</body>
+</html>

@@ -132,7 +132,9 @@ var loreIpsum = require("ace/requirejs/text!./docs/plaintext.txt");
 for (var i = 0; i < 5; i++) {
     loreIpsum += loreIpsum;
 }
-
+ /**
+  * ghghn
+  */
 var docs = [
     new Doc(
         "javascript", "JavaScript",
@@ -310,6 +312,7 @@ var wrapModeEl = document.getElementById("soft_wrap");
 var themeEl = document.getElementById("theme");
 var foldingEl = document.getElementById("folding");
 var selectStyleEl = document.getElementById("select_style");
+var aceOverlayEl = document.getElementById("ace_overlay");
 var highlightActiveEl = document.getElementById("highlight_active");
 var showHiddenEl = document.getElementById("show_hidden");
 var showGutterEl = document.getElementById("show_gutter");
@@ -366,6 +369,7 @@ function updateUIEditorOptions() {
     saveOption(wrapModeEl, session.getUseWrapMode() ? session.getWrapLimitRange().min || "free" : "off");
 
     saveOption(selectStyleEl, editor.getSelectionStyle() == "line");
+    saveOption(aceOverlayEl, editor.renderer.$textLayer.getShowOverlay());
     saveOption(themeEl, editor.getTheme());
     saveOption(highlightActiveEl, editor.getHighlightActiveLine());
     saveOption(showHiddenEl, editor.getShowInvisibles());
@@ -461,6 +465,10 @@ bindDropdown("soft_wrap", function(value) {
 
 bindCheckbox("select_style", function(checked) {
     env.editor.setSelectionStyle(checked ? "line" : "text");
+});
+
+bindCheckbox("ace_overlay", function(checked) {
+    env.editor.renderer.$textLayer.setShowOverlay(checked);
 });
 
 bindCheckbox("highlight_active", function(checked) {
