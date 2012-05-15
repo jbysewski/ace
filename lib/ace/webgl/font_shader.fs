@@ -7,7 +7,7 @@ varying vec3 vcolor;
 
 void main(void) {
     //gl_FragColor = vec4(1.0, 0.0, 1.0, 1.0);
-    vec2 pos = vec2(gl_PointCoord.x, gl_PointCoord.y);
+    vec2 pos = vec2(gl_PointCoord.x, 1.0-gl_PointCoord.y);
     if(drawFull > 0.0)
        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0) * texture2D(texture, pos);
     else
