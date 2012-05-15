@@ -369,7 +369,7 @@ function updateUIEditorOptions() {
     saveOption(wrapModeEl, session.getUseWrapMode() ? session.getWrapLimitRange().min || "free" : "off");
 
     saveOption(selectStyleEl, editor.getSelectionStyle() == "line");
-    saveOption(aceOverlayEl, editor.renderer.$textLayer.getShowOverlay());
+//    saveOption(aceOverlayEl, editor.renderer.$textLayer.getShowOverlay());
     saveOption(themeEl, editor.getTheme());
     saveOption(highlightActiveEl, editor.getHighlightActiveLine());
     saveOption(showHiddenEl, editor.getShowInvisibles());
@@ -467,9 +467,11 @@ bindCheckbox("select_style", function(checked) {
     env.editor.setSelectionStyle(checked ? "line" : "text");
 });
 
+/*
 bindCheckbox("ace_overlay", function(checked) {
     env.editor.renderer.$textLayer.setShowOverlay(checked);
 });
+*/
 
 bindCheckbox("highlight_active", function(checked) {
     env.editor.setHighlightActiveLine(checked);
