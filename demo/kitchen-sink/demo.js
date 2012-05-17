@@ -312,7 +312,6 @@ var wrapModeEl = document.getElementById("soft_wrap");
 var themeEl = document.getElementById("theme");
 var foldingEl = document.getElementById("folding");
 var selectStyleEl = document.getElementById("select_style");
-var aceOverlayEl = document.getElementById("ace_overlay");
 var highlightActiveEl = document.getElementById("highlight_active");
 var showHiddenEl = document.getElementById("show_hidden");
 var showGutterEl = document.getElementById("show_gutter");
@@ -322,6 +321,7 @@ var showHScrollEl = document.getElementById("show_hscroll");
 var animateScrollEl = document.getElementById("animate_scroll");
 var softTabEl = document.getElementById("soft_tab");
 var behavioursEl = document.getElementById("enable_behaviours");
+var useWebGLRendererEl = document.getElementById("use_webgl_renderer");
 
 docs.forEach(function(doc) {
     var option = document.createElement("option");
@@ -369,7 +369,6 @@ function updateUIEditorOptions() {
     saveOption(wrapModeEl, session.getUseWrapMode() ? session.getWrapLimitRange().min || "free" : "off");
 
     saveOption(selectStyleEl, editor.getSelectionStyle() == "line");
-//    saveOption(aceOverlayEl, editor.renderer.$textLayer.getShowOverlay());
     saveOption(themeEl, editor.getTheme());
     saveOption(highlightActiveEl, editor.getHighlightActiveLine());
     saveOption(showHiddenEl, editor.getShowInvisibles());
@@ -380,6 +379,7 @@ function updateUIEditorOptions() {
     saveOption(animateScrollEl, editor.getAnimatedScroll());
     saveOption(softTabEl, session.getUseSoftTabs());
     saveOption(behavioursEl, editor.getBehavioursEnabled());
+    saveOption(useWebGLRendererEl, env.split.getUseWebGLRenderer());
 }
 
 function saveOption(el, val) {
@@ -467,12 +467,6 @@ bindCheckbox("select_style", function(checked) {
     env.editor.setSelectionStyle(checked ? "line" : "text");
 });
 
-/*
-bindCheckbox("ace_overlay", function(checked) {
-    env.editor.renderer.$textLayer.setShowOverlay(checked);
-});
-*/
-
 bindCheckbox("highlight_active", function(checked) {
     env.editor.setHighlightActiveLine(checked);
 });
@@ -511,6 +505,10 @@ bindCheckbox("enable_behaviours", function(checked) {
 
 bindCheckbox("fade_fold_widgets", function(checked) {
     env.editor.setFadeFoldWidgets(checked);
+});
+
+bindCheckbox("use_webgl_renderer", function(checked) {
+    env.split.setUseWebGLRenderer(checked);
 });
 
 var secondSession = null;
