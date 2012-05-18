@@ -322,6 +322,7 @@ var animateScrollEl = document.getElementById("animate_scroll");
 var softTabEl = document.getElementById("soft_tab");
 var behavioursEl = document.getElementById("enable_behaviours");
 var useWebGLRendererEl = document.getElementById("use_webgl_renderer");
+var webGLUpsidedownEl = document.getElementById("webgl_renderer_upsidedown");
 
 docs.forEach(function(doc) {
     var option = document.createElement("option");
@@ -509,6 +510,11 @@ bindCheckbox("fade_fold_widgets", function(checked) {
 
 bindCheckbox("use_webgl_renderer", function(checked) {
     env.split.setUseWebGLRenderer(checked);
+});
+
+bindCheckbox("webgl_renderer_upsidedown", function(checked) {
+   if(env.editor.renderer.setUpsidedown !== undefined)
+      env.editor.renderer.setUpsidedown(checked);
 });
 
 var secondSession = null;
