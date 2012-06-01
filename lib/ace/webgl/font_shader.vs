@@ -3,10 +3,11 @@ attribute vec2 aVertexPosition;
 
 uniform vec2 uResolution;
 uniform vec2 uOffset;
-uniform float pointSize;
+uniform float uPointSize;
 
 varying vec2 vCharacterOffset;
 varying vec3 vcolor;
+varying float vSecondTexture;
 
 #define TWO_18 262144.0
 #define TWO_17 131072.0
@@ -19,9 +20,13 @@ varying vec3 vcolor;
 void main(void) {
     vec2 pos = (aVertexPosition + uOffset) / uResolution * 2.0 - 1.0;
     gl_Position = vec4(pos * vec2(1,-1), 0, 1);
-    gl_PointSize = pointSize;
+    gl_PointSize = uPointSize;
     float i = floor(index / TWO_17);
-    vCharacterOffset = vec2(mod(i,16.0) / 16.0, floor(i/16.0) / 16.0);
+    if(i > 63.0)
+      vSecondTexture = 1.0;
+    else
+      vSecondTexture = 0.0;
+    vCharacterOffset = vec2(mod(i,8.0) / 8.0, floor(i/8.0) / 8.0);
 
     float r = floor(index / TWO_10);
     float g = floor(index / TWO_5);
