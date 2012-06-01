@@ -324,6 +324,7 @@ var softTabEl = document.getElementById("soft_tab");
 var behavioursEl = document.getElementById("enable_behaviours");
 var useWebGLRendererEl = document.getElementById("use_webgl_renderer");
 var webGLUpsidedownEl = document.getElementById("webgl_renderer_upsidedown");
+var webGL60fosEl = document.getElementById("webgl_renderer_60fps");
 
 docs.forEach(function(doc) {
     var option = document.createElement("option");
@@ -516,6 +517,11 @@ bindCheckbox("use_webgl_renderer", function(checked) {
 bindCheckbox("webgl_renderer_upsidedown", function(checked) {
    if(env.editor.renderer.setUpsidedown !== undefined)
       env.editor.renderer.setUpsidedown(checked);
+});
+
+bindCheckbox("webgl_renderer_60fps", function(checked) {
+   if(env.editor.renderer.set60fps !== undefined)
+      env.editor.renderer.set60fps(checked);
 });
 
 var secondSession = null;
